@@ -123,11 +123,28 @@ if user_file:
                 
                 st.write(f"Comparing against {total_files} industry benchmarks...")
                 prompt = f"""
-                You are a senior recruiter for {industry_choice}. 
-                Compare the Candidate CV against {total_files} benchmarks.
-                BENCHMARKS: {knowledge[:35000]}
-                CANDIDATE: {user_text}
-                Format: ✅ Keep, 🛠️ Improve, and Industry Score (out of 10).
+                You are an expert recruiter and ATS (Applicant Tracking System) Specialist for the {industry_choice} industry.
+
+                TASK:
+                1. Compare the CANDIDATE CV against the provided {total_files} INDUSTRY BENCHMARKS.
+                2. Identify missing ATS keywords and technical competencies common in the benchmarks.
+
+                BENCHMARKS DATA: {knowledge[:35000]}
+                CANDIDATE CV: {user_text}
+
+                OUTPUT FORMAT (Markdown):
+                ### 📊 Industry Alignment Score: [X/10]
+
+                ### ✅ Strengths (What to Keep)
+                * [Point 1]
+                * [Point 2]
+
+                ### 🛠️ Required Improvements (ATS Gap Analysis)
+                * **Missing Keywords:** [List specific technical terms found in benchmarks but missing in CV]
+                * **Bullet Point Polish:** [Suggest stronger action verbs for their experience]
+
+                ### 💡 Recruiter's Action Plan
+                * [One specific piece of advice for an SIT student applying for this role]
                 """
                 
                 try:
