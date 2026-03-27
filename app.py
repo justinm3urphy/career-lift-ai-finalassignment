@@ -22,7 +22,17 @@ if not firebase_admin._apps:
 # Initialize Gemini 3 Flash
 try:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-    model = genai.GenerativeModel('gemini-3-flash-preview')
+    
+    # We define the 'brain' settings here
+    config = {
+        "temperature": 0.2,  # Low temperature = Focused and consistent
+        "top_p": 0.8,        # Top-p = Professional vocabulary filtering
+    }
+
+    model = genai.GenerativeModel(
+        model_name='gemini-1.5-pro', # Upgrading to Pro as discussed!
+        generation_config=config
+    )
 except Exception as e:
     st.error(f"Gemini Configuration Error: {e}")
 
