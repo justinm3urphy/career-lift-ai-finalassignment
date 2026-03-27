@@ -30,7 +30,7 @@ try:
     }
 
     model = genai.GenerativeModel(
-        model_name='gemini-1.5-pro', # Upgrading to Pro as discussed!
+        model_name='gemini-1.5-flash', # Upgrading to Pro as discussed!
         generation_config=config
     )
 except Exception as e:
